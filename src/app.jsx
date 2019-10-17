@@ -1,13 +1,15 @@
 import React from 'react'
-import Title from './components/Title'
+import SignIn from './components/SignIn'
 
 import dogImg from 'Assets/img/dog.jpg'
 
+import 'antd/dist/antd.css'
 import './app.scss'
+import './tailwind.css'
 
 const App = () => (
 	<div className="app">
-		<Title />
+		<SignIn />
 		<img src={dogImg} />
 	</div>
 )

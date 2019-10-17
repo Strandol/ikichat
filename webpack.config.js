@@ -23,7 +23,7 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.s[ac]ss$/i,
+				test: /\.(s[ac]ss|css)$/i,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
@@ -33,8 +33,15 @@ module.exports = {
 					},
 					'css-loader',
 					'sass-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							ident: 'postcss',
+							plugins: [require('tailwindcss'), require('autoprefixer')],
+						},
+					},
 				],
-			},
+			}
 		],
 	},
 	plugins: [
