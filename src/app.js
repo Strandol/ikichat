@@ -1,8 +1,14 @@
 import React from 'react'
+import Title from './components/Title'
+
+import dogImg from 'Images/dog.jpg'
+
+import './app.scss'
 
 const App = () => (
-    <div>
-        <h1>Welcome to IkiChat!</h1>
+    <div className='app'>
+        <Title />
+        <img src={dogImg} />
     </div>
 )
 
