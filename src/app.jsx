@@ -1,7 +1,7 @@
 import React from 'react'
 import Title from './components/Title'
 
-import dogImg from 'Images/dog.jpg'
+import dogImg from 'Assets/img/dog.jpg'
 
 import './app.scss'
 
