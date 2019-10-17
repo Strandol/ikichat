@@ -30,16 +30,16 @@ module.exports = {
 						options: {
 							hmr: process.env.NODE_ENV === 'development',
 						},
-					},
+                    },
 					'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: [require('tailwindcss'), require('autoprefixer')],
+                        },
+                    },
 					'sass-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							ident: 'postcss',
-							plugins: [require('tailwindcss'), require('autoprefixer')],
-						},
-					},
 				],
 			}
 		],
