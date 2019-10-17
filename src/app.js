@@ -6,10 +6,10 @@ import dogImg from 'Images/dog.jpg'
 import './app.scss'
 
 const App = () => (
-    <div className='app'>
-        <Title />
-        <img src={dogImg} />
-    </div>
+	<div className="app">
+		<Title />
+		<img src={dogImg} />
+	</div>
 )
 
 export default App
