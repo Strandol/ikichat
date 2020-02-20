@@ -65,7 +65,7 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin({
 			filename: 'style.build.css',
-		}),
+		})
 	],
 	resolve: {
 		extensions: ['.jsx', '.js'],
