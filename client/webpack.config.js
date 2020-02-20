@@ -5,11 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const purgecss = require('@fullhuman/postcss-purgecss')({
-	content: [
-		'./src/**/*.html',
-		'./src/**/*.jsx',
-	],
-	defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+	content: ['./src/**/*.html', './src/**/*.jsx'],
+	defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
 })
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -21,7 +18,7 @@ const tailwindcss = {
 		plugins: [
 			require('tailwindcss'),
 			require('autoprefixer'),
-			...isDev ? [] : [purgecss]
+			...(isDev ? [] : [purgecss]),
 		],
 	},
 }
@@ -73,12 +70,13 @@ module.exports = {
 	resolve: {
 		extensions: ['.jsx', '.js'],
 		alias: {
-			Assets: path.join(__dirname, 'src/assets'),
+			'@assets': path.join(__dirname, 'src/assets'),
+			'@store': path.join(__dirname, 'src/store'),
 		},
 	},
 	optimization: {
 		minimize: true,
-		minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()]
+		minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()],
 	},
 	devServer: {
 		contentBase: path.join(__dirname, 'dist'),
@@ -94,5 +92,5 @@ module.exports = {
 	stats: {
 		modules: false,
 		children: false,
-	}
+	},
 }

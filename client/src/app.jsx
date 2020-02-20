@@ -1,16 +1,23 @@
-import React from 'react'
-import SignIn from './components/SignIn'
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
 
-import dogImg from 'Assets/img/dog.jpg'
+import dogImg from '@assets/img/dog.jpg'
+import store from '@store/store'
+
+import SignIn from './components/SignIn'
 
 import 'antd/dist/antd.css'
 import './app.scss'
 
-const App = () => (
-	<div className="app">
-		<SignIn />
-		<img src={dogImg} />
-	</div>
-)
+class App extends Component {
+	render() {
+		return (
+			<div className="app">
+				<SignIn />
+				<img src={dogImg} />
+			</div>
+		)
+	}
+}
 
 export default App
