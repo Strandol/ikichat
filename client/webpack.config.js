@@ -1,12 +1,34 @@
 const path = require('path')
+const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
-const isDev = () => process.env.NODE_ENV === 'development'
+const purgecss = require('@fullhuman/postcss-purgecss')({
+	content: [
+		'./src/**/*.html',
+		'./src/**/*.jsx',
+	],
+	defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+})
+
+const isDev = process.env.NODE_ENV === 'development'
+
+const tailwindcss = {
+	loader: 'postcss-loader',
+	options: {
+		ident: 'postcss',
+		plugins: [
+			require('tailwindcss'),
+			require('autoprefixer'),
+			...isDev ? [] : [purgecss]
+		],
+	},
+}
 
 module.exports = {
 	entry: './src/index.jsx',
-	mode: 'development',
+	mode: isDev ? 'development' : 'production',
 	output: {
 		filename: './index.build.js',
 	},
@@ -30,17 +52,11 @@ module.exports = {
 					{
 						loader: MiniCssExtractPlugin.loader,
 						options: {
-							hmr: isDev(),
+							hmr: isDev,
 						},
 					},
 					'css-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							ident: 'postcss',
-							plugins: [require('tailwindcss'), require('autoprefixer')],
-						},
-					},
+					tailwindcss,
 					'sass-loader',
 				],
 			},
@@ -60,6 +76,10 @@ module.exports = {
 			Assets: path.join(__dirname, 'src/assets'),
 		},
 	},
+	optimization: {
+		minimize: true,
+		minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()]
+	},
 	devServer: {
 		contentBase: path.join(__dirname, 'dist'),
 		compress: true,
@@ -70,9 +90,9 @@ module.exports = {
 		overlay: true,
 		open: true,
 	},
-	devtool: isDev() ? 'eval-cheap-module-source-map' : 'source-map',
+	devtool: isDev ? 'inline-source-map' : 'source-map',
 	stats: {
 		modules: false,
 		children: false,
-	},
+	}
 }
