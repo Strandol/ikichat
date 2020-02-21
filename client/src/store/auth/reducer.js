@@ -1,16 +1,25 @@
-import { SIGN_IN } from './actions'
+import { AUTH_PASSWORD_CHANGE, AUTH_USERNAME_CHANGE } from './actions'
 
 const DEFAULT_STATE = Object.freeze({
-	user: undefined,
+	username: undefined,
+	password: undefined,
+	loading: false
 })
 
 export default (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
-		case SIGN_IN:
+		case AUTH_PASSWORD_CHANGE:
 			return {
 				...state,
-				user: true,
+				password: action.password
 			}
+
+		case AUTH_USERNAME_CHANGE:
+			return {
+				...state,
+				username: action.username
+			}
+
 		default:
 			return state
 	}

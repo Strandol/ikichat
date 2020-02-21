@@ -28,6 +28,7 @@ module.exports = {
 	mode: isDev ? 'development' : 'production',
 	output: {
 		filename: './index.build.js',
+		publicPath: '/'
 	},
 	module: {
 		rules: [
@@ -84,6 +85,7 @@ module.exports = {
 		stats: 'minimal',
 		port: process.env.DEV_SERVER_PORT || 3000,
 		watchContentBase: true,
+		historyApiFallback: true,
 		progress: true,
 		overlay: true,
 		open: true,

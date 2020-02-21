@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 
-import dogImg from '@assets/img/dog.jpg'
 import createStore from '@store/store'
 import rootReducer from '@store/reducer'
 
@@ -15,12 +15,15 @@ const store = createStore(rootReducer)
 class App extends Component {
 	render() {
 		return (
-			<Provider store={store}>
-				<div className="app">
-					<SignIn />
-					<img src={dogImg} />
-				</div>
-			</Provider>
+			<div className='app'>
+				<Provider store={store}>
+					<BrowserRouter>
+						<Switch>
+							<Route path='/signin' component={SignIn} />
+						</Switch>
+					</BrowserRouter>
+				</Provider>
+			</div>
 		)
 	}
 }

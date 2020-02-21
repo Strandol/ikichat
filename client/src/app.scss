@@ -5,6 +5,6 @@
 
 @import 'tailwindcss/utilities';
 
-.app {
-	background: grey;
+#root, .app {
+	height: 100%;
 }
