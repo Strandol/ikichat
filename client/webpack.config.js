@@ -74,7 +74,7 @@ module.exports = {
 			'@store': path.join(__dirname, 'src/store'),
 		},
 	},
-	optimization: {
+	optimization: isDev ? undefined : {
 		minimize: true,
 		minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()],
 	},
