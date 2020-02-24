@@ -66,7 +66,7 @@ class SignInForm extends Component {
 	}
 }
 
-const WrappedForm = Form.create({ 
+export const WrappedForm = Form.create({ 
 	name: 'signin',
 	mapPropsToFields: props => ({
 		username: Form.createFormField({
