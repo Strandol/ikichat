@@ -1,3 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignInForm render 1`] = `ShallowWrapper {}`;
+exports[`SignInForm render signInForm 1`] = `
+<Form
+  colon={true}
+  hideRequiredMark={false}
+  layout="vertical"
+  onSubmit={[Function]}
+>
+  <FormItem
+    hasFeedback={false}
+    help=""
+    validateStatus=""
+  >
+    <Input
+      placeholder="Username"
+      prefix={
+        <Icon
+          type="user"
+        />
+      }
+      type="text"
+    />
+  </FormItem>
+  <FormItem
+    hasFeedback={false}
+    help=""
+    validateStatus=""
+  >
+    <Input
+      placeholder="Password"
+      prefix={
+        <Icon
+          type="lock"
+        />
+      }
+      type="password"
+    />
+  </FormItem>
+  <FormItem
+    hasFeedback={false}
+  >
+    <Button
+      block={false}
+      disabled={false}
+      ghost={false}
+      htmlType="submit"
+      loading={false}
+      type="primary"
+    >
+      Log in
+    </Button>
+  </FormItem>
+</Form>
+`;

@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { getUsername, getPassword, isLoading } from '@store/auth/selectors';
 import { changeUsername, changePassword } from '@store/auth/actions';
 
-class SignInForm extends Component {
+export class SignInForm extends Component {
 	rules = {
 		username: {
 			rules: [{ required: true, message: 'Input your username!' }]
