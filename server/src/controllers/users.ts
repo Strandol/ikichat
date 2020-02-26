@@ -27,7 +27,19 @@ const authenticateUser: RequestHandler = async (req, res, next) => {
 	try {
 		const user = await User.findOne({ email: req.body.email })
 
-		console.log(user)
+		if (bcrypt.compareSync(req.body.password, user.password)) {
+			const token = jwt.sign({ id: user.id }, req.app.get('secretKey'), { expiresIn: '1h' });
+
+			res.json({
+				status: 'success',
+				data: { user, token }
+			})
+		} else {
+			res.json({
+				status: 'error',
+				message: 'Invalid email or password'
+			})
+		}
 	} catch (error) {
 		next(error)
 	}

@@ -5,7 +5,9 @@ import bodyParser from 'body-parser'
 
 import { isDev } from './utils'
 import loggerMiddleware from './middleware/logger'
+import notFoundMiddleware from './middleware/not-found'
 import errorMiddleware from './middleware/error'
+
 import Chat from './schema/Chat'
 
 import usersRouter from './routes/users'
@@ -14,13 +16,16 @@ const app = express()
 const port = process.env.PORT || 8000
 
 mongoose.connect(
-	'mongodb+srv://dvalian:231297@mymongo-rxpl9.mongodb.net/test?retryWrites=true&w=majority',
+	'mongodb+srv://dvalian:231297@cluster0-rxpl9.mongodb.net/test?retryWrites=true&w=majority',
 	{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
 )
 
 mongoose.connection.once('open', () => {
+	
 	console.log('We are connected to mongodb!!!')
 })
+
+app.set('secretKey', 'xxx-hello-yyy');
 
 app.use(bodyParser.json())
 
@@ -45,6 +50,8 @@ app.use((req, res, next) => {
 		})
 	})
 })
+
+app.use(notFoundMiddleware)
 
 app.use(errorMiddleware)
 
