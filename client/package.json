@@ -5,6 +5,7 @@
 	"main": "webpack.config.js",
 	"dependencies": {
 		"antd": "^3.24.1",
+		"express": "^4.17.1",
 		"prop-types": "^15.7.2",
 		"react": "^16.10.2",
 		"react-dom": "^16.10.2",
@@ -42,13 +43,16 @@
 		"terser-webpack-plugin": "^2.3.5",
 		"webpack": "^4.41.2",
 		"webpack-cli": "^3.3.9",
-		"webpack-dev-server": "^3.8.2"
+		"webpack-dev-server": "^3.8.2",
+		"webpack-merge": "^4.2.2"
 	},
 	"scripts": {
 		"start:dev": "cross-env-shell NODE_ENV=development webpack-dev-server",
 		"start:prod": "http-server ./dist --cors",
 		"build": "npm-run-all -s clean build:webpack",
-		"build:webpack": "cross-env-shell NODE_ENV=production webpack",
+		"build:webpack-prod": "cross-env-shell NODE_ENV=production webpack --config webpack.client.js --watch",
+		"build:server": "webpack --config webpack.server.js --watch",
+		"build:client": "cross-env-shell NODE_ENV=development webpack --config webpack.client.js --watch",
 		"clean": "del-cli dist",
 		"test": "jest src"
 	},
