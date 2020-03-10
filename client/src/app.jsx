@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import createStore from '@store/store'
 import rootReducer from '@store/reducer'
-
-import SignIn from './components/SignIn'
+import Routes from './routes'
 
 import 'antd/dist/antd.css'
 import './app.scss'
@@ -18,9 +17,7 @@ class App extends Component {
 			<div className='app'>
 				<Provider store={store}>
 					<BrowserRouter>
-						<Switch>
-							<Route path='/signin' component={SignIn} />
-						</Switch>
+						<Routes />
 					</BrowserRouter>
 				</Provider>
 			</div>
