@@ -1,10 +1,6 @@
-/* purgecss start ignore */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-/* purgecss end ignore */
-
-@import 'tailwindcss/utilities';
+@import '~antd/dist/antd.css';
 
 #root, .app {
 	height: 100%;
+	width: 100%;
 }

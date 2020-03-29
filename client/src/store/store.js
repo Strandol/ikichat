@@ -17,10 +17,12 @@ const createDevStore = (reducer, state) => {
 	return createStore(reducer, state, withDevTools)
 }
 
-export default (reducer, state) => {
+const configureStore = (reducer, state) => {
 	const isDev = process.env.NODE_ENV === 'development'
 
 	const create = isDev ? createDevStore : createProdStore
 
 	return create(reducer, state)
 }
+
+export default configureStore;
