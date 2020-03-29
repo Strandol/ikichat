@@ -1,4 +1,7 @@
-import { Form, Icon, Input, Button } from 'antd'
+import Form from 'antd/lib/form'
+import Icon from 'antd/lib/icon'
+import Input from 'antd/lib/input'
+import Button from 'antd/lib/button'
 import { connect } from 'react-redux'
 import React, { Component } from "react";
 import { getUsername, getPassword, isLoading } from '@store/auth/selectors';

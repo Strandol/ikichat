@@ -1,24 +1,25 @@
 import express from 'express'
+import path from 'path'
 import { renderToString } from 'react-dom/server'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router-dom'
 
-import App from '../app.jsx'
-import configureStore from '../store/store'
-import template from './template'
 import rootReducer from '@store/reducer.js'
-import Routes from '../routes.jsx'
+
+import App from '../src/app.jsx'
+import configureStore from '../src/store/store'
+import template from './template'
 
 const PORT = process.env.PORT || 3000
 
 const app = express()
 
-app.use(express.static('public'))
+app.use(express.static(path.resolve(__dirname, '../public')))
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
 	const preloadedData = {
-		ssr: {
+		auth: {
 			units: 22,
 			loading: false,
 		},
@@ -30,7 +31,7 @@ app.get('*', (req, res) => {
 	const app = renderToString(
 		<Provider store={store}>
 			<StaticRouter location={req.path} context={{}}>
-				<Routes />
+				<App />
 			</StaticRouter>
 		</Provider>
 	)
