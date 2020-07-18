@@ -30,6 +30,7 @@
 		"mini-css-extract-plugin": "^0.8.0",
 		"node-sass": "^4.12.0",
 		"nodemon": "^2.0.2",
+		"npm-run-all": "^4.1.5",
 		"optimize-css-assets-webpack-plugin": "^5.0.3",
 		"redux-devtools-extension": "^2.13.8",
 		"sass-loader": "^8.0.0",
@@ -43,10 +44,12 @@
 		"webpack-shell-plugin": "^0.5.0"
 	},
 	"scripts": {
+		"start:ssr": "npm-run-all -p watch:client watch:server",
 		"start:server": "nodemon dist/bundle.js --watch ./dist",
 		"start:client": "cross-env-shell NODE_ENV=development webpack-dev-server --config webpack.client.js",
 		"build:client": "cross-env-shell NODE_ENV=production webpack --config webpack.client.js",
 		"build:server": "cross-env-shell NODE_ENV=production webpack --config webpack.server.js",
+		"watch:client": "cross-env-shell NODE_ENV=development webpack --config webpack.client.js --watch",
 		"watch:server": "cross-env-shell NODE_ENV=development webpack --config webpack.server.js --watch",
 		"test": "jest src"
 	},
