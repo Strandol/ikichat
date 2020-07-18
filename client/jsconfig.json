@@ -1,11 +1,13 @@
 {
 	"compilerOptions": {
-		"baseUrl": ".",
-		"module": "commonjs",
+		"baseUrl": "./",
+		"target": "es6",
+        "module": "commonjs",
 		"paths": {
 			"@store/*": ["./src/store/*"],
 			"@assets/*": ["./src/assets/*"]
 		}
 	},
+	"include": ["./src/**/*"],
 	"exclude": ["node_modules"]
 }

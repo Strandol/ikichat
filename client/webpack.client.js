@@ -63,9 +63,6 @@ const config = {
 		modules: false,
 		children: false,
 	},
-	performance: {
-		hints: false,
-	},
 	devServer: {
 		compress: true,
 		stats: 'minimal',
