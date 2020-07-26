@@ -1,0 +1,47 @@
+.login {
+    &-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #04c582;
+    }
+
+    &-form {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 1.5rem 1.8rem;
+        background-color: #2e3137;
+        border-radius: 10px;
+
+        .ui.form {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &-tabs {
+        display: flex;
+    }
+
+    &-tab {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        padding-bottom: .8rem;
+        margin-bottom: 1rem;
+        color: #6c757f;
+        border-bottom: 2px solid #6c757f;
+        cursor: pointer;
+
+        &.active {
+            color: #fff;
+            border-color: #fff;
+            border-width: 3px;
+        }
+    }
+}

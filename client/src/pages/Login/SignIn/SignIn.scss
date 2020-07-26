@@ -1,0 +1,13 @@
+.sign-in {
+    &-forget-password {
+        text-align: center;
+        font-weight: bold;
+        color: #6b6b6b;
+
+        span {
+            text-transform: uppercase;
+            border-bottom: 1px solid #6b6b6b;
+            cursor: pointer;
+        }
+    }
+}

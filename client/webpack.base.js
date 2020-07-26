@@ -11,6 +11,13 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: 'babel-loader',
 			},
+			{
+				test: /\.(png|woff|woff2|eot|ttf|svg)$/i,
+				loader: 'file-loader',
+				options: {
+					name: 'assets/[name].[ext]',
+				},
+			},
 		],
 	},
 	resolve: {
